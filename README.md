@@ -23,3 +23,8 @@ To put what was stated previously in simple terms, SLAM utilizes several key met
 ![image](https://github.com/RoboticsZ12/Robotic_Vision_SLAM/assets/142946153/d0f7b64e-a98d-4708-b5d5-124dbff19bf2)
 
 *Final SLAM interpretation of the surrounding area.*
+
+# Implementing SLAM
+Implementing a SLAM project involves a series of critical steps, each step contributes to the system's accuracy and reliability of the system. Initially, we need to select a suitable framework or library, such as ORB-SLAM as described in the tutorial. This will provide a foundation for the project's development and overall mapping sequence. Alternatively, you could build the project from scratch using libraries and packages like OpenCV and Eigen. These packages allow for customization to specific project requirements. 
+
+Next, data acquisition must be acquired by gathering sensor data from cameras, LiDAR, or IMUs, ensuring synchronization for multiple sensors. We then implement feature matching, which employs algorithms like ORB, SIFT, or SURF to identify keypoints and establish correspondence between frames.  Once the data is accumulated, mapping of the area is done by utilizing estimated poses and triangulated points to construct an environment map, which varies based on SLAM type (e.g., visual or LiDAR). Loop closure detection identifies revisited locations to correct drift and enhance map consistency, followed by global map optimization to refine the entire map and enhance trajectory accuracy. 
