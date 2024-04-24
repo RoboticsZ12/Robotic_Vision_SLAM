@@ -8,6 +8,7 @@ To be more specific, the algorithm basically uses feature matching to determine 
 To put what was stated previously in simple terms, SLAM utilizes several key methods to achieve simultaneous localization and mapping. It begins by establishing correspondences between frames through feature matching, allowing for image comparison. The camera pose is then computed to determine the position and orientation of the captured image. With this information, triangulation is performed to convert the 2D image data into a 3D map representation of the inputted image. The algorithm, ORB/SIFT, then employs feature matching to calculate homography, enabling the estimation of relative camera poses. This step utilizes triangulation, then results in the creation of a comprehensive 3D map of the surrounding environment. Once all these things are achieved, the SLAM algorithm should have the capability of running as intended for the desired output map. 
 
 # Results From MATLAB Example
+The below images show the expected output when running the exmaple code from the MATLAB link above. The individual data used to acquire this map can be optained [HERE](SLAM/MATLAB_Ex).
 ![image](https://github.com/RoboticsZ12/Robotic_Vision_SLAM/assets/142946153/54b7182c-0999-434e-a830-94fe52576636)
 
 *Inputted image with feature matching enabled.*
