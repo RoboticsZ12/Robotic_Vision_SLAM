@@ -1,5 +1,5 @@
 # MATLAB EXAMPLE
-A described in the README, this data was used as an example which was taken from the MATLAB website provided below.
+A described in the README, this data and code was used and can be found as an example from the MATLAB website provided below.
 
 [Monocular Visual Simultaneous Localization and Mapping (SLAM)](https://www.mathworks.com/help/vision/ug/monocular-visual-simultaneous-localization-and-mapping.html)
 
