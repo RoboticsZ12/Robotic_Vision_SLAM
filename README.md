@@ -9,6 +9,8 @@ To put what was stated previously in simple terms, SLAM utilizes several key met
 
 # Results From MATLAB Example
 The below images show the expected output when running the exmaple code from the MATLAB link above. The individual data used to acquire this map can be optained [HERE](SLAM/MATLAB_Ex).
+
+
 ![image](https://github.com/RoboticsZ12/Robotic_Vision_SLAM/assets/142946153/54b7182c-0999-434e-a830-94fe52576636)
 
 *Inputted image with feature matching enabled.*
