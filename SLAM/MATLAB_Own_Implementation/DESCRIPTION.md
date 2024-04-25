@@ -24,7 +24,7 @@ For obvious reasons, we are using our own data, so we do not need to download th
 % end
 ````
 
-As previously stated, this will cancel the download of the MATLAB data. Now, I must incorporate the data that I acquired to the MATLAB code. To do this, I need to change the "ImageFolder" variable to the designated location on my own device. The original code can be seen commented out, and the modified code with the modified path can be seen below.
+As previously stated, this will cancel the download of the MATLAB data. Now, I must incorporate the data that I acquired to the MATLAB code. To do this, I need to change the "ImageFolder" variable to the designated location on my own device. The original code can be seen commented out, and the modified code with the modified path can be seen below. To run your own images, change the image folder file to the file that has your own images. 
 
 ````
 % imageFolder = fullfile('C:\Users\zgeorgi\Documents\RB_images\RB\vision\');
@@ -36,6 +36,51 @@ currI = readimage(imds, currFrameIdx);
 himage = imshow(currI);
 ````
 
+The only other piece of code that needs to be changed is located under the "Store Initial Key Frames and Map Points" title. To make the code compile, the first two uncommented lines must be incorporated. These two imread functions will enable the images to read the first two images, then cycle through the rest of the images of the data set. 
 
+````
+% Load your first and second images
+firstImage = imread('C:\Users\zgeorgi\Documents\RB_images_2\RB_2\vision\WIN_20240423_20_57_24_Pro.jpg');
+secondImage = imread('C:\Users\zgeorgi\Documents\RB_images_2\RB_2\vision\WIN_20240423_20_57_27_Pro.jpg');
 
+% Extract features from the first image (you can use your own feature extraction method)
+[firstFeatures, firstPoints] = helperDetectAndExtractFeatures(firstImage, scaleFactor, numLevels, numPoints);
 
+% Extract features from the second image (you can use your own feature extraction method)
+[secondFeatures, secondPoints] = helperDetectAndExtractFeatures(secondImage, scaleFactor, numLevels, numPoints);
+
+% Create an empty imageviewset object to store key frames
+vSetKeyFrames = imageviewset;
+
+% Create an empty worldpointset object to store 3-D map points
+mapPointSet   = worldpointset;
+
+% Add the first key frame. Place the camera associated with the first 
+% key frame at the origin, oriented along the Z-axis
+preViewId     = 1;
+vSetKeyFrames = addView(vSetKeyFrames, preViewId, rigidtform3d, Points=prePoints,...
+    Features=preFeatures.Features);
+
+% Add the second key frame
+currViewId    = 2;
+vSetKeyFrames = addView(vSetKeyFrames, currViewId, relPose, Points=currPoints,...
+    Features=currFeatures.Features);
+
+% Add connection between the first and the second key frame
+vSetKeyFrames = addConnection(vSetKeyFrames, preViewId, currViewId, relPose, Matches=indexPairs);
+
+% Add 3-D map points
+[mapPointSet, newPointIdx] = addWorldPoints(mapPointSet, xyzWorldPoints);
+
+% Add observations of the map points
+preLocations  = prePoints.Location;
+currLocations = currPoints.Location;
+preScales     = prePoints.Scale;
+currScales    = currPoints.Scale;
+
+% Add image points corresponding to the map points in the first key frame
+mapPointSet   = addCorrespondences(mapPointSet, preViewId, newPointIdx, indexPairs(:,1));
+
+% Add image points corresponding to the map points in the second key frame
+mapPointSet   = addCorrespondences(mapPointSet, currViewId, newPointIdx, indexPairs(:,2));
+````
