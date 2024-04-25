@@ -36,7 +36,7 @@ currI = readimage(imds, currFrameIdx);
 himage = imshow(currI);
 ````
 
-The only other piece of code that needs to be changed is located under the "Store Initial Key Frames and Map Points" title. To make the code compile, the first two uncommented lines must be incorporated. These two imread functions will enable the images to read the first two images, then cycle through the rest of the images of the data set. 
+The only other piece of code that needs to be changed is located under the "Store Initial Key Frames and Map Points" title. To make the code compile, the first two uncommented lines must be incorporated. These two imread functions will enable the images to read the first two images, then cycle through the rest of the images of the data set. The remaining code is simply coppied from the MATLAB website. 
 
 ````
 % Load your first and second images
