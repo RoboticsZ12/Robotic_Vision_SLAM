@@ -84,3 +84,5 @@ mapPointSet   = addCorrespondences(mapPointSet, preViewId, newPointIdx, indexPai
 % Add image points corresponding to the map points in the second key frame
 mapPointSet   = addCorrespondences(mapPointSet, currViewId, newPointIdx, indexPairs(:,2));
 ````
+
+![image](https://github.com/RoboticsZ12/Robotic_Vision_SLAM/assets/142946153/d78f97b4-2813-46aa-8f45-96f14f17bc77)
